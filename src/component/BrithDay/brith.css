@@ -1,0 +1,25 @@
+.BrithDay{
+    width: 100%;
+    padding: 0 11%;
+    /* height: 100px; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.BrithDayItem{
+width: 100%;
+background-color: aqua;
+display: flex;
+}
+.BrithdayItemList{
+    display: flex;
+    width: 80%;
+    height: 100px;
+
+}
+.BrithdayItemList>img{
+    width: 70px;
+    height: 70px;
+ margin-left: 0;
+    border-radius: 50%;
+}

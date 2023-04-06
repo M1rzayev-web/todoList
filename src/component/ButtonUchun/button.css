@@ -1,0 +1,71 @@
+.ButtonUchun{
+    width: 100%;
+    padding: 0 8%;
+    border: 1px solid green;
+}
+.h3Btn{
+    width: 160px;
+    text-align: center;
+    font-size: 32px;
+    border-bottom: 4px solid greenyellow;
+
+}
+.buttonList{
+    margin-top: 40px;
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttonList>button{
+    max-width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: goldenrod;
+    color: white;
+    border: none;
+}
+.List{
+    display: flex   ;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+.article{
+    width: 350px;
+    height: 450px;
+    margin: 15px 0;
+}
+.article>img{
+    width: 100%;
+    height: 250px;
+    border-radius: 10px 10px 0 0;
+}
+.article>span{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.article>span>h4{
+    margin-left: 0;
+    font-size: 20px;
+}
+.article>span>p{
+    width: 80px;
+    height: 25px;
+    background-color: goldenrod;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+    border-radius: 5px;
+}
+.article>p{
+    color: rgb(101, 100, 100);
+}
