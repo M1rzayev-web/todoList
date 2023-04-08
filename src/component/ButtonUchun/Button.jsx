@@ -67,7 +67,7 @@ function Button() {
     {
       id: 6,
       title: "Oreo Dream",
-      category: "coctailgit aa",
+      category: "coctail",
       price: 18.99,
       Images: image6,
       haqida: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed

@@ -1,58 +1,90 @@
-import React, {useState} from "react";
-import "./magazin.css";
+import React, { useState } from "react";
 import { ArrayPhone } from "./magazinArray";
+import "./magazin.css";
 function Magazin() {
-    const [count, setCount] = useState(0);
-    const [countKor,setCountKor]=useState(0)
-    const [narx, setNarx] = useState(100)
-    const array = ArrayPhone.map((item) => (
-      <article className="Phone-item" key={item.id}>
-        <img
-          src={item.images}
-          alt="phone"
-        />
-        <div className="card-div">
-          <h3>Google pixel</h3>
+  const [count, setCount] = useState({});
 
-          <span className="price">${item.price}</span>
-          <br />
-          <button className="remove-btn">remove</button>
-        </div>
-        <div className="sanovchi">
-          <button className="qoshuvchi1" onClick={() => setCount(count + 1)}>
-            <i class="fa-solid fa-circle-arrow-up"></i>
-          </button>
-          <p>{count}</p>
-          <button
-            className="ayiruvchi1"
-            onClick={() => (count > 0 ? setCount(count - 1) : null)}
-          >
-            <i class="fa-solid fa-circle-arrow-down"></i>
-          </button>
-        </div>
-      </article>
-    ));
-    
+  const inc = (id) => {
+    setCount((prevCount) => ({ ...prevCount, [id]: (prevCount[id] || 0) + 1 }));
+  };
+ const Remove = (id) => {
+   setCount((prevCount) => {
+     const newCount = { ...prevCount };
+     delete newCount[id];
+     return newCount;
+   });
+ };
+
+
+  const phoneList = ArrayPhone.map((phone) => (
+    <article className="Phone-item" key={phone.id}>
+      <img src={phone.images} alt={phone.name} />
+      <div className="card-div">
+        <h3>{phone.name}</h3>
+        <span className="price">${phone.price}</span>
+        <br />
+        <button onClick={() => Remove(phone.id)}>Remove</button>
+      </div>
+      <div className="sanovchi">
+        <button onClick={() => inc(phone.id)}>+</button>
+        <p>{count[phone.id] || 0}</p>
+        <button
+          onClick={() => {
+            if (count[phone.id] > 0) {
+              setCount((prevCount) => ({
+                ...prevCount,
+                [phone.id]: prevCount[phone.id] - 1,
+              }));
+            }
+           
+          }}
+        >
+          -
+        </button>
+      </div>
+    </article>
+  ));
+
+  const totalItems = Object.values(count).reduce(
+    (total, count) => total + count,
+    0
+  );
+
+  const totalPrice = Object.keys(count).reduce(
+    (total, id) =>
+      total +
+      (count[id] || 0) *
+        ArrayPhone.find((phone) => phone.id === Number(id)).price,
+    0
+  );
   return (
     <div className="Magazin">
       <div className="header">
         <h1>UseReducer</h1>
         <span className="Korzinka">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <p className="total-phone">{countKor+count}</p>
+          <i className="fa-solid fa-cart-shopping"></i>
+          <p className="total-phone">{totalItems}</p>
         </span>
       </div>
       <div className="main">
-              <h3>Your Bag</h3>
-              
-       
-              {array}
+        <h3>Your Bag</h3>
+
+        {phoneList}
       </div>
       <div className="Narxlar">
         <h3>Total</h3>
-              <p className="qiymatPrice">${narx*count}</p>
+        <p className="qiymatPrice">${totalPrice}</p>
       </div>
-      <button className="clearAll">Clear All</button>
+      <button
+        className="clearAll"
+        onClick={() => {
+          if (phoneList.length > 0) {
+            return "";
+          }
+        }}
+      >
+        Clear All
+      </button>
     </div>
   );
 }
